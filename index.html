@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background-image: url(i\ lov\ u_page-0001.jpg);
+        background-size: cover;
+        height: 100vh;
+      }
+      
+      button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 1em 2em;
+        border-radius: 5px;
+        background-color: pink;
+        color: white;
+        font-size: 1.2em;
+        cursor: pointer;
+      }
+      
+      .message {
+        display: block;
+        position: absolute;
+        top: calc(50% + 50px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 1em;
+        background-color: rgba(255,255,255,0.7);
+        color: black;
+        font-size: 1.2em;
+        border-radius: 5px;
+        text-align: center;
+        font-family: "Comic Sans MS", cursive, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="showMessage">Te amo</button>
+    <div id="messagesContainer"></div>
+    
+    <script>
+      const button = document.querySelector('#showMessage');
+      const messagesContainer = document.querySelector('#messagesContainer');
+      const messages = [
+        "Te amo mi amor.",
+        "Eres mi todo.",
+        "Te amo culona.",
+        "Sos hermosa.",
+        "Mi preciosa.",
+        "Mi reina.",
+        "Mi culona.",
+        "Mi princesa.",
+        "Mi loca.",
+        "Te adoro.",
+        "No te canses de mi, nunca.",
+        "Sale TFT?.",
+        "Eres mi sol como dice Escanor",
+         "Mi amor",
+         "Eres mi todo",
+         "No hay nadie que te iguale",
+         "Eres mi razón de ser",
+         "Te amo con todo mi ser",
+         "Eres mi mejor amigo y mi amor",
+         "Eres mi compañero de vida",
+         "Eres mi sueño hecho realidad",
+         "Eres mi amor eterno",
+         "Mi salvadora de examenes",
+         "Mi cocinera",
+         "Mi sol",
+        ];
+        
+      
+      let currentMessageIndex = 0;
+      
+      button.addEventListener('click', function() {
+        if (messagesContainer.childNodes.length > 0) {
+          messagesContainer.removeChild(messagesContainer.childNodes[0]);
+        } else {
+          const messageDiv = document.createElement('div');
+          messageDiv.classList.add('message');
+          messageDiv.innerHTML = messages[currentMessageIndex];
+          
+          messageDiv.style.top = `${Math.floor(Math.random() * 80) + 10}%`;
+          messageDiv.style.left = `${Math.floor(Math.random() * 80) + 10}%`;
+          
+          messageDiv.addEventListener('click', function() {
+            messagesContainer.removeChild(this);
+          });
+          
+          messagesContainer.appendChild(messageDiv);
+          currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+        }
+      });
+    </script>
+  </body>
+</html>
